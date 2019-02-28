@@ -1,7 +1,7 @@
 #!/bin/bash
 #Menu
-echo -e "Welcome to Menu" | lolcat'
-echo -e "Modified by IEPH-Raf" | lolcat'
+echo -e "Welcome to Menu" | lolcat
+echo -e "Modified by IEPH-Raf" | lolcat
 echo -e ""
 echo -e "* menu      : Displays a list of available commands"
 echo -e "* usernew   : Creating an SSH Account"
