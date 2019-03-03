@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Original script by fornesia, rzengineer and fawzya 
-# Mod by IEPH-Raf for Adding OCS Panel
+# Mod by IEPH-Raf for IEPH VPN PRO
 # 
 # ==================================================
 
@@ -32,8 +32,6 @@ state=Manila
 locality=Manila
 organization=ByteHAX
 organizationalunit=IT
-commonname=bytehax.blogspot.com
-email=143Clarkz@gmail.com
 
 # go to root
 cd
@@ -89,10 +87,10 @@ echo 'echo -e ""' >> .bashrc
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/halimawehi/ehi/master/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/halimawehi/iephvpnpro/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup by IEPH-Raf</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/halimawehi/ehi/master/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/halimawehi/iephvpnpro/master/vps.conf"
 service nginx restart
 
 # install openvpn
@@ -127,15 +125,15 @@ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
 # setting port ssh
 cd
-sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 444' /etc/ssh/sshd_config
+sed -i 's/Port 21/Port 21/g' /etc/ssh/sshd_config
+sed -i '/Port 21/a Port 441' /etc/ssh/sshd_config
 service ssh restart
 
 # install dropbear
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=3128/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 143"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=21/DROPBEAR_PORT=3128/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 149"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
@@ -144,7 +142,7 @@ service dropbear restart
 # install squid3
 cd
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/halimawehi/ehi/master/squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/halimawehi/iephvpnpro/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
@@ -165,7 +163,7 @@ socket = r:TCP_NODELAY=1
 
 
 [dropbear]
-accept = 443
+accept = 449
 connect = 127.0.0.1:3128
 
 END
@@ -197,7 +195,7 @@ cd ddos-deflate-master
 rm -rf /root/ddos-deflate-master.zip 
 
 # bannerrm /etc/issue.net
-wget -O /etc/issue.net "https://raw.githubusercontent.com/halimawehi/ehi/master/issue.net"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/halimawehi/iephvpnpro/master/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 service ssh restart
@@ -264,13 +262,13 @@ echo "===========================================" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Service"  | tee -a log-install.txt
 echo "-------"  | tee -a log-install.txt
-echo "OpenSSH  : 22, 444"  | tee -a log-install.txt
-echo "Dropbear : 143, 3128"  | tee -a log-install.txt
-echo "SSL      : 443"  | tee -a log-install.txt
-echo "Squid3   : 8000, 8080 (limit to IP SSH)"  | tee -a log-install.txt
-echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
+echo "OpenSSH  : 21, 441"  | tee -a log-install.txt
+echo "Dropbear : 149, 3128"  | tee -a log-install.txt
+echo "SSL      : 449"  | tee -a log-install.txt
+echo "Squid3   : 8000, 8080, 3128, 8888 (limit to IP SSH)"  | tee -a log-install.txt
+echo "OpenVPN  : TCP 1194 (client config : http://$MYIP/client.ovpn)"  | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
-echo "nginx    : 81"  | tee -a log-install.txt
+echo "nginx    : 80"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Script"  | tee -a log-install.txt
 echo "------"  | tee -a log-install.txt
