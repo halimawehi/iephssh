@@ -9,7 +9,7 @@ nginx : 80
 
 # Installation
 
-VPS Only (For Servers) : wget https://raw.githubusercontent.com/halimawehi/iephvpnpro/master/VPScrptZ.sh && chmod +x VPScrptZ.sh && ./VPScrptZ.sh
+VPS Only (For Servers) : wget https://raw.githubusercontent.com/halimawehi/iephvpnpro/master/iephvpn.sh && chmod +x iephvpn.sh && iephvpn.sh
 
 # Credits
 Modder: Clrkz https://fb.com/143Clarkz
