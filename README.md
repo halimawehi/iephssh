@@ -1,7 +1,7 @@
 # VPSAutoScrptz    
-OpenSSH : 22, 441   
+OpenSSH : 22, 444   
 Dropbear : 143, 443    
-SSL : 449     
+SSL : 442  
 Squid3 : 8000, 8080, 3128, 8888 (limit to IP SSH)     
 OpenVPN : TCP 1194 (client config : http://myip/client.ovpn)    
 badvpn : badvpn-udpgw port 7300    
