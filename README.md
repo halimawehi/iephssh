@@ -9,7 +9,7 @@ nginx : 80
 
 # Installation
 
-VPS Only (For Servers) : wget https://raw.githubusercontent.com/halimawehi/iephssh/master/iephssh.sh && chmod +x iephssh.sh && iephssh.sh
+VPS Only (For Servers) : wget https://raw.githubusercontent.com/halimawehi/iephssh/master/iephssh.sh && chmod +x iephssh.sh && ./iephssh.sh
 
 # Credits
 Modder: Clrkz https://fb.com/143Clarkz
