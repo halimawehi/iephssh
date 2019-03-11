@@ -164,7 +164,7 @@ socket = r:TCP_NODELAY=1
 
 [dropbear]
 accept = 442
-connect = 127.0.0.1:3128
+connect = 127.0.0.1:443
 
 END
 
