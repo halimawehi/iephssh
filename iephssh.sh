@@ -32,6 +32,8 @@ state=Manila
 locality=Manila
 organization=ByteHAX
 organizationalunit=IT
+commonname=sshieph.com
+email=iephdevelopers@gmail.com
 
 # go to root
 cd
